@@ -1,0 +1,441 @@
+
+
+
+2019-06-24 21:36:57.495062
+used_features: ['masa_all', 'del_asa_all', 'sbr_all', 'rasa_all', 'del_rasa_all', 'hydrophobicity', 'hydrophilicity']
+
+
+
+2019-06-24 21:45:57.638366
+
+
+SETTINGS
+Used features: ['masa_all', 'del_asa_all', 'sbr_all', 'rasa_all', 'del_rasa_all', 'hydrophobicity', 'hydrophilicity']
+Learning rate: 0.07
+L1 Strength: 0.05
+Hidden Units: [7, 5, 3, 1]
+Regularization multiplier: 5
+
+STATISTICS
+Training Success Rate: 0.5750798722044729
+Validation Success Rate: 0.6904761904761906
+Training Sensitivity: 0.0
+Training Specificity: 1.0
+Validation Sensitivity: 0.0
+Validation Specificity: 1.0
+
+
+
+2019-06-24 21:54:53.556694
+  period 01 : 0.58  period 02 : 0.58  period 03 : 0.58  period 04 : 0.58  period 05 : 0.58  period 06 : 0.58  period 07 : 0.58  period 08 : 0.58  period 09 : 0.58  period 10 : 0.58
+SETTINGS
+Used features: ['masa_all', 'del_asa_all', 'sbr_all', 'rasa_all', 'del_rasa_all', 'hydrophobicity', 'hydrophilicity']
+Learning rate: 0.07
+L1 Strength: 0.05
+Hidden Units: [7, 5, 3, 1]
+Regularization multiplier: 5
+
+STATISTICS
+Training Success Rate: 0.5750798722044729
+Validation Success Rate: 0.6904761904761906
+Training Sensitivity: 0.0
+Training Specificity: 1.0
+Validation Sensitivity: 0.0
+Validation Specificity: 1.0
+
+
+2019-06-24 21:58:03.677659
+period 01 : 0.73
+period 02 : 0.75
+period 03 : 0.75
+period 04 : 0.75
+period 05 : 0.75
+period 06 : 0.75
+period 07 : 0.75
+period 08 : 0.75
+period 09 : 0.75
+period 10 : 0.75
+
+SETTINGS
+Used features: ['masa_all', 'del_asa_all', 'sbr_all', 'rasa_all', 'del_rasa_all', 'hydrophobicity', 'hydrophilicity']
+Learning rate: 0.07
+L1 Strength: 0.05
+Hidden Units: [7, 5, 3, 1]
+Regularization multiplier: 5
+
+STATISTICS
+Training Success Rate: 0.7497783863279073
+Validation Success Rate: 0.6986111111111112
+Training Sensitivity: 0.7030075187969925
+Training Specificity: 0.7883333333333333
+Validation Sensitivity: 0.6871794871794872
+Validation Specificity: 0.7034482758620689
+
+
+2019-06-24 22:03:47.317228
+period 01 : 0.67
+period 02 : 0.68
+period 03 : 0.70
+period 04 : 0.70
+period 05 : 0.70
+period 06 : 0.71
+period 07 : 0.71
+period 08 : 0.71
+period 09 : 0.71
+period 10 : 0.72
+
+SETTINGS
+Used features: ['masa_all', 'del_asa_all', 'sbr_all', 'rasa_all', 'del_rasa_all', 'hydrophobicity', 'hydrophilicity']
+Learning rate: 0.07
+L1 Strength: 0.05
+Hidden Units: [7, 5, 3, 1]
+Periods: 10
+Regularization multiplier: 5
+
+STATISTICS
+Training Success Rate: 0.7015564937370049
+Validation Success Rate: 0.653788422776518
+Training Sensitivity: 0.7120300751879699
+Training Specificity: 0.7183333333333334
+Validation Sensitivity: 0.7076923076923077
+Validation Specificity: 0.6436781609195402
+
+
+2019-06-24 22:11:35.377051
+period 01 : 0.58
+period 02 : 0.58
+period 03 : 0.58
+period 04 : 0.58
+period 05 : 0.58
+period 06 : 0.58
+period 07 : 0.58
+period 08 : 0.58
+period 09 : 0.58
+period 10 : 0.58
+
+SETTINGS
+Used features: ['masa_all', 'del_asa_all', 'sbr_all', 'rasa_all', 'del_rasa_all', 'hydrophobicity', 'hydrophilicity']
+Learning rate: 0.07
+L1 Strength: 0.05
+Hidden Units: [7, 5, 3, 1]
+Periods: 10
+Steps per period: 50
+Regularization multiplier: 5
+
+STATISTICS
+Training Success Rate: 0.5750798722044729
+Validation Success Rate: 0.6904761904761906
+Training Sensitivity: 0.0
+Training Specificity: 1.0
+Validation Sensitivity: 0.0
+Validation Specificity: 1.0
+
+
+2019-06-24 22:14:22.623976
+period 01 : 0.58
+period 02 : 0.64
+period 03 : 0.66
+period 04 : 0.67
+period 05 : 0.68
+period 06 : 0.68
+period 07 : 0.68
+period 08 : 0.68
+period 09 : 0.68
+period 10 : 0.69
+
+SETTINGS
+Used features: ['masa_all', 'del_asa_all', 'sbr_all', 'rasa_all', 'del_rasa_all', 'hydrophobicity', 'hydrophilicity']
+Learning rate: 0.07
+L1 Strength: 0.05
+Hidden Units: [7, 5, 3, 1]
+Periods: 10
+Steps per period: 500
+Regularization multiplier: 5
+
+STATISTICS
+Training Success Rate: 0.6640337998884325
+Validation Success Rate: 0.7104815444696398
+Training Sensitivity: 0.5195488721804511
+Training Specificity: 0.8083333333333333
+Validation Sensitivity: 0.6128205128205129
+Validation Specificity: 0.767816091954023
+
+
+2019-06-24 22:17:44.094806
+period 01 : 0.71
+period 02 : 0.71
+period 03 : 0.71
+period 04 : 0.71
+period 05 : 0.71
+period 06 : 0.71
+period 07 : 0.71
+period 08 : 0.71
+period 09 : 0.71
+period 10 : 0.71
+period 11 : 0.71
+period 12 : 0.71
+period 13 : 0.71
+period 14 : 0.71
+period 15 : 0.71
+period 16 : 0.71
+period 17 : 0.71
+period 18 : 0.71
+period 19 : 0.71
+period 20 : 0.71
+
+SETTINGS
+Used features: ['masa_all', 'del_asa_all', 'sbr_all', 'rasa_all', 'del_rasa_all', 'hydrophobicity', 'hydrophilicity']
+Learning rate: 0.07
+L1 Strength: 0.05
+Hidden Units: [7, 5, 3, 1]
+Periods: 20
+Steps per period: 500
+Regularization multiplier: 5
+
+STATISTICS
+Training Success Rate: 0.7102605329460256
+Validation Success Rate: 0.7303940951593628
+Training Sensitivity: 0.5383458646616541
+Training Specificity: 0.8352777777777778
+Validation Sensitivity: 0.6461538461538462
+Validation Specificity: 0.7735632183908046
+
+
+2019-06-24 22:19:23.418423
+period 01 : 0.58
+period 02 : 0.58
+period 03 : 0.58
+period 04 : 0.58
+period 05 : 0.58
+period 06 : 0.58
+period 07 : 0.58
+period 08 : 0.58
+period 09 : 0.58
+period 10 : 0.58
+period 11 : 0.58
+period 12 : 0.58
+period 13 : 0.58
+period 14 : 0.58
+period 15 : 0.58
+period 16 : 0.58
+period 17 : 0.58
+period 18 : 0.58
+period 19 : 0.58
+period 20 : 0.58
+
+SETTINGS
+Used features: ['masa_all', 'del_asa_all', 'sbr_all', 'rasa_all', 'del_rasa_all', 'hydrophobicity', 'hydrophilicity']
+Learning rate: 0.07
+L1 Strength: 0.05
+Hidden Units: [7, 5, 3, 1]
+Periods: 20
+Steps per period: 500
+Regularization multiplier: 5
+
+STATISTICS
+Training Success Rate: 0.5750798722044729
+Validation Success Rate: 0.6904761904761902
+Training Sensitivity: 0.0
+Training Specificity: 1.0
+Validation Sensitivity: 0.0
+Validation Specificity: 1.0
+
+
+2019-06-24 22:22:26.168763
+period 01 : 0.58
+period 02 : 0.58
+period 03 : 0.62
+period 04 : 0.65
+period 05 : 0.67
+period 06 : 0.68
+period 07 : 0.69
+period 08 : 0.69
+period 09 : 0.70
+period 10 : 0.70
+period 11 : 0.71
+period 12 : 0.71
+period 13 : 0.71
+period 14 : 0.71
+period 15 : 0.71
+period 16 : 0.71
+period 17 : 0.71
+period 18 : 0.71
+period 19 : 0.71
+period 20 : 0.71
+
+SETTINGS
+Used features: ['masa_all', 'del_asa_all', 'sbr_all', 'rasa_all', 'del_rasa_all', 'hydrophobicity', 'hydrophilicity']
+Learning rate: 0.12
+L1 Strength: 0.05
+Hidden Units: [7, 5, 3, 1]
+Periods: 20
+Steps per period: 500
+Regularization multiplier: 5
+
+STATISTICS
+Training Success Rate: 0.6830893487942087
+Validation Success Rate: 0.6686413440343763
+Training Sensitivity: 0.6454887218045112
+Training Specificity: 0.7655555555555555
+Validation Sensitivity: 0.6410256410256411
+Validation Specificity: 0.6649425287356322
+
+
+2019-06-24 22:51:57.434041
+period 01 : 0.72
+period 02 : 0.73
+period 03 : 0.73
+period 04 : 0.73
+period 05 : 0.73
+period 06 : 0.73
+period 07 : 0.73
+period 08 : 0.73
+period 09 : 0.74
+period 10 : 0.73
+period 11 : 0.73
+period 12 : 0.73
+period 13 : 0.73
+period 14 : 0.73
+period 15 : 0.73
+period 16 : 0.73
+period 17 : 0.73
+period 18 : 0.73
+period 19 : 0.73
+period 20 : 0.73
+
+SETTINGS
+Used features: ['masa_all', 'del_asa_all', 'sbr_all', 'rasa_all', 'del_rasa_all', 'hydrophobicity', 'hydrophilicity']
+Learning rate: 0.12
+L1 Strength: 0.05
+Hidden Units: [7, 5, 3, 1]
+Periods: 20
+Steps per period: 500
+Regularization multiplier: 5
+
+STATISTICS
+Training Success Rate: 0.7335463258785943
+Validation Success Rate: 0.6988095238095238
+Training Sensitivity: 0.637593984962406
+Training Specificity: 0.8044444444444444
+Validation Sensitivity: 0.6551282051282051
+Validation Specificity: 0.7183908045977011
+
+
+2019-06-24 23:45:54.306586
+period 01 : 0.71
+period 02 : 0.71
+period 03 : 0.71
+period 04 : 0.71
+period 05 : 0.70
+period 06 : 0.70
+period 07 : 0.70
+period 08 : 0.70
+period 09 : 0.70
+period 10 : 0.70
+period 11 : 0.70
+period 12 : 0.70
+period 13 : 0.70
+period 14 : 0.70
+period 15 : 0.70
+period 16 : 0.70
+period 17 : 0.70
+period 18 : 0.70
+period 19 : 0.70
+period 20 : 0.70
+period 21 : 0.70
+period 22 : 0.70
+period 23 : 0.70
+period 24 : 0.70
+period 25 : 0.70
+period 26 : 0.70
+period 27 : 0.70
+period 28 : 0.70
+period 29 : 0.70
+period 30 : 0.70
+period 31 : 0.70
+period 32 : 0.70
+period 33 : 0.70
+period 34 : 0.70
+period 35 : 0.70
+period 36 : 0.70
+period 37 : 0.70
+period 38 : 0.70
+period 39 : 0.70
+period 40 : 0.70
+period 41 : 0.70
+period 42 : 0.70
+period 43 : 0.70
+period 44 : 0.70
+period 45 : 0.70
+period 46 : 0.70
+period 47 : 0.70
+period 48 : 0.70
+period 49 : 0.70
+period 50 : 0.70
+period 51 : 0.70
+period 52 : 0.70
+period 53 : 0.70
+period 54 : 0.70
+period 55 : 0.70
+period 56 : 0.70
+period 57 : 0.70
+period 58 : 0.70
+period 59 : 0.70
+period 60 : 0.70
+
+SETTINGS
+Used features: ['masa_all', 'del_asa_all', 'sbr_all', 'rasa_all', 'del_rasa_all', 'hydrophobicity', 'hydrophilicity']
+Learning rate: 0.12
+L1 Strength: 0.05
+Hidden Units: [7, 5, 3, 1]
+Periods: 20
+Steps per period: 500
+Regularization multiplier: 5
+
+STATISTICS
+Training Success Rate: 0.7019169329073482
+Validation Success Rate: 0.7318783068783069
+Training Sensitivity: 0.5600250626566416
+Training Specificity: 0.8067592592592593
+Validation Sensitivity: 0.652991452991453
+Validation Specificity: 0.7672413793103449
+
+
+2019-06-28 14:21:27.845117
+period 01 : 0.71
+period 02 : 0.71
+period 03 : 0.72
+period 04 : 0.72
+period 05 : 0.72
+period 06 : 0.72
+period 07 : 0.73
+period 08 : 0.73
+period 09 : 0.73
+period 10 : 0.73
+period 11 : 0.73
+period 12 : 0.73
+period 13 : 0.73
+period 14 : 0.73
+period 15 : 0.73
+period 16 : 0.73
+period 17 : 0.73
+period 18 : 0.73
+period 19 : 0.73
+period 20 : 0.74
+
+SETTINGS
+Used features: ['masa_all', 'del_asa_all', 'sbr_all', 'rasa_all', 'del_rasa_all', 'hydrophobicity', 'hydrophilicity']
+Learning rate: 0.12
+L1 Strength: 0.05
+Hidden Units: [7, 5, 3, 1]
+Periods: 20
+Steps per period: 500
+Regularization multiplier: 5
+
+STATISTICS
+Training Success Rate: 0.7351437699680511
+Validation Success Rate: 0.696031746031746
+Training Sensitivity: 0.6560150375939849
+Training Specificity: 0.7936111111111112
+Validation Sensitivity: 0.6961538461538461
+Validation Specificity: 0.6959770114942528

@@ -1,0 +1,837 @@
+(blossom) Jimmys-MacBook-Pro:src jimmykang$ clear
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(blossom) Jimmys-MacBook-Pro:src jimmykang$ python main.py
+THIS IS THE CORRECT PATH
+
+MASTER TRAINING DATAFRAME - PRE NORMALIZATION
+     masa_all  del_asa_all  sbr_all  rasa_all  del_rasa_all  hotspot  blosum_a  blosum_c  blosum_d  ...  pssm_y  pssm_v  HSEBD  HSEAU  HSEAD  HSEBU   CN  RD  Rda
+0          51           30      0.6       0.3           0.2        0        -1        -4         2  ...      -1       0   22.0   21.0   24.0   23.0 45.0 2.9  3.7
+1          39           33      0.8       0.2           0.1        0        -3        -2        -4  ...       1      -1   20.0   23.0   23.0   26.0 46.0 2.9  4.6
+2          42           36      0.9       0.2           0.2        1        -3        -2        -4  ...       0      -2   23.0   22.0   27.0   26.0 49.0 3.5  4.3
+3          58           30      0.5       0.3           0.2        0        -1        -4         2  ...       2      -1   14.0   10.0   29.0   25.0 39.0 3.0  3.6
+4           3            3      1.0       0.0           0.0        0         1        -1         0  ...       1      -2   22.0   25.0   23.0   26.0 48.0 6.2  6.5
+..        ...          ...      ...       ...           ...      ...       ...       ...       ...  ...     ...     ...    ...    ...    ...    ...  ...  ..  ...
+308        82           65      0.8       0.5           0.4        1        -1        -1        -4  ...      -1       1   16.0   18.0   14.0   16.0 32.0 2.8  3.1
+309       147            0      0.0       0.7           0.0        0        -1        -3        -1  ...      -2      -2   12.0    5.0   12.0    5.0 17.0 1.9  2.0
+310       137           64      0.5       0.7           0.3        0        -1        -3         0  ...      -1      -2   18.0   15.0    7.0    4.0 22.0 1.9  2.0
+311        81           81      1.0       0.6           0.6        1         0        -1        -3  ...      -1       4   24.0   23.0   13.0   12.0 36.0 4.6  5.2
+312       192          138      0.7       0.8           0.6        1        -3        -2        -4  ...       2      -3   18.0   20.0   12.0   14.0 32.0 2.2  2.0
+
+[313 rows x 59 columns]
+MASTER TESTING DATAFRAME - PRE NORMALIZATION
+     masa_all  del_asa_all  sbr_all  rasa_all  del_rasa_all  hotspot  blosum_a  blosum_c  blosum_d  ...  pssm_y  pssm_v  HSEBD  HSEAU  HSEAD  HSEBU   CN  RD  Rda
+0          52           24      0.5       0.3           0.1        0        -2        -2        -3  ...       2       0   16.0   18.0   21.0   23.0 39.0 3.3  4.5
+1          50           49      1.0       0.3           0.2        0        -2        -2        -3  ...       3      -1   30.0   28.0   20.0   18.0 48.0 5.5  4.0
+2          43           42      1.0       0.2           0.2        1        -2        -2        -3  ...       5      -2   29.0   32.0   18.0   21.0 50.0 4.4  3.1
+3         163           96      0.6       0.8           0.5        0        -1        -3        -1  ...      -2      -2   20.0   19.0   22.0   21.0 41.0 2.4  2.0
+4         190          188      1.0       0.8           0.8        1        -3        -2        -4  ...       2      -3   22.0   30.0   19.0   27.0 49.0 5.0  5.4
+..        ...          ...      ...       ...           ...      ...       ...       ...       ...  ...     ...     ...    ...    ...    ...    ...  ...  ..  ...
+121       123          120      1.0       0.8           0.7        0        -2        -3         6  ...       2       0   25.0   39.0   16.0   30.0 55.0 2.7  2.4
+122        80           74      0.9       0.3           0.3        0        -1        -3        -2  ...      -2      -3   28.0   25.0   21.0   18.0 46.0 4.4  3.2
+123       106           41      0.4       0.4           0.2        0        -1        -3        -2  ...      -2       0   15.0   18.0   27.0   30.0 45.0 2.4  3.0
+124       128           79      0.6       0.6           0.4        0        -2        -2        -3  ...       6      -1    3.0    2.0    8.0    7.0 10.0 2.2  2.0
+125        66           41      0.6       0.3           0.2        0        -2        -2        -3  ...       7      -3   20.0   21.0   27.0   28.0 48.0 3.4  4.6
+
+[126 rows x 59 columns]
+master_training_dataframe
+     masa_all  del_asa_all  sbr_all  rasa_all  del_rasa_all  hotspot  blosum_a  blosum_c  blosum_d  ...  pssm_y  pssm_v  HSEBD  HSEAU  HSEAD  HSEBU    CN   RD  Rda
+0        -3.6         -2.9     -0.6      -4.1          -3.1        0       1.0      -8.3       4.8  ...    -1.6     3.9    1.5    1.0    0.8    0.2   1.3 -1.6 -0.4
+1        -4.8         -2.5      3.6      -5.9          -3.3        0      -9.3       1.9      -6.0  ...     1.9     1.1    0.1    2.4   -0.1    2.8   1.9 -1.5  1.1
+2        -4.5         -2.1      3.8      -5.7          -3.0        1      -9.3       1.9      -6.0  ...     0.1    -1.7    2.2    1.7    3.5    2.8   3.5 -0.4  0.6
+3        -2.9         -2.9     -1.7      -3.4          -3.1        0       1.0      -8.3       4.8  ...     3.6     1.1   -4.1   -6.6    5.3    1.9  -2.0 -1.4 -0.7
+4        -8.3         -6.1      6.1      -8.9          -6.1        0      11.3       7.0       1.2  ...     1.9    -1.7    1.5    3.8   -0.1    2.8   3.0  4.6  4.6
+..        ...          ...      ...       ...           ...      ...       ...       ...       ...  ...     ...     ...    ...    ...    ...    ...   ...  ...  ...
+308      -0.5          1.3      2.8       0.7           2.4        1       1.0       7.0      -6.0  ...    -1.6     6.6   -2.7   -1.1   -8.1   -6.0  -5.8 -1.8 -1.6
+309       6.0         -6.4    -10.2       5.0          -6.6        0       1.0      -3.2      -0.6  ...    -3.3    -1.7   -5.4  -10.1   -9.9  -15.6 -14.1 -3.5 -3.6
+310       5.0          1.2     -2.6       4.5           0.7        0       1.0      -3.2       1.2  ...    -1.6    -1.7   -1.3   -3.1  -14.4  -16.5 -11.3 -3.5 -3.6
+311      -0.6          3.2      6.1       2.1           6.4        1       6.1       7.0      -4.2  ...    -1.6    14.9    2.9    2.4   -9.0   -9.5  -3.6  1.7  2.2
+312      10.5         10.0      1.5       7.6           7.2        1      -9.3       1.9      -6.0  ...     3.6    -4.4   -1.3    0.3   -9.9   -7.7  -5.8 -2.9 -3.6
+
+[313 rows x 59 columns]
+master_testing_dataframe
+     masa_all  del_asa_all  sbr_all  rasa_all  del_rasa_all  hotspot  blosum_a  blosum_c  blosum_d  ...  pssm_y  pssm_v  HSEBD  HSEAU  HSEAD  HSEBU    CN   RD  Rda
+0        -4.2         -4.3     -3.9      -4.9          -4.8        0      -4.7       0.8      -3.5  ...     4.6     3.1   -2.2   -0.7   -0.1    0.9  -1.0 -1.2 -1.0
+1        -4.4         -1.3      5.9      -5.1          -1.8        0      -4.7       0.8      -3.5  ...     6.5     0.3    7.3    5.8   -0.8   -2.8   3.4 -0.9 -1.1
+2        -5.1         -2.2      5.8      -5.8          -2.6        1      -4.7       0.8      -3.5  ...    10.2    -2.4    6.6    8.4   -2.1   -0.6   4.4 -1.0 -1.2
+3         7.2          4.3     -1.5       5.9           3.3        0       0.5      -2.8       0.6  ...    -2.9    -2.4    0.5   -0.1    0.6   -0.6  -0.0 -1.3 -1.4
+4        10.0         15.4      6.1       6.8          11.7        1      -9.9       0.8      -5.6  ...     4.6    -5.1    1.8    7.1   -1.4    3.8   3.9 -0.9 -0.9
+..        ...          ...      ...       ...           ...      ...       ...       ...       ...  ...     ...     ...    ...    ...    ...    ...   ...  ...  ...
+121       3.1          7.2      5.8       5.1           9.6        0      -4.7      -2.8      15.2  ...     4.6     3.1    3.9   13.0   -3.5    6.0   6.8 -1.3 -1.3
+122      -1.3          1.7      4.9      -3.7          -0.7        0       0.5      -2.8      -1.5  ...    -2.9    -5.1    5.9    3.9   -0.1   -2.8   2.4 -1.0 -1.2
+123       1.4         -2.3     -5.3      -1.6          -3.8        0       0.5      -2.8      -1.5  ...    -2.9     3.1   -2.9   -0.7    4.0    6.0   1.9 -1.3 -1.2
+124       3.6          2.3     -0.9       3.0           1.7        0      -4.7       0.8      -3.5  ...    12.1     0.3  -11.1  -11.2   -8.9  -10.8 -15.3 -1.3 -1.4
+125      -2.7         -2.3     -0.9      -4.2          -3.3        0      -4.7       0.8      -3.5  ...    14.0    -5.1    0.5    1.3    4.0    4.6   3.4 -1.2 -1.0
+
+[126 rows x 59 columns]
+Train model?(y/n):y
+
+WARNING: The TensorFlow contrib module will not be included in TensorFlow 2.0.
+For more information, please see:
+  * https://github.com/tensorflow/community/blob/master/rfcs/20180907-contrib-sunset.md
+  * https://github.com/tensorflow/addons
+If you depend on functionality not listed there, please file an issue.
+
+creating DNNClassifier object...
+creating input functions...
+TRAINING TARGETS
+     hotspot
+0          0
+1          0
+2          1
+3          0
+4          0
+..       ...
+308        1
+309        0
+310        0
+311        1
+312        1
+
+[313 rows x 1 columns]
+Training model...
+Success Rate (on training data):
+2019-06-12 15:35:09.066922: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2019-06-12 15:35:09.067216: I tensorflow/core/common_runtime/process_util.cc:71] Creating new thread pool with default inter op setting: 12. Tune using inter_op_parallelism_threads for best performance.
+  period 00 : 0.58
+  period 01 : 0.58
+  period 02 : 0.58
+  period 03 : 0.58
+  period 04 : 0.58
+  period 05 : 0.58
+  period 06 : 0.58
+  period 07 : 0.58
+  period 08 : 0.58
+  period 09 : 0.58
+Final success rate(on training data):   0.58
+Final success rate (on validation data): 0.69
+Training Sensitivity: 0.0
+Training Specificity: 1.0
+Validation Sensitivity: 0.0
+Validation Specificity: 1.0
+Model training finished
+learning rate: 0.007
+l1 strength: 0.07
+hidden units: [7, 5, 3, 1]
+used features: ['masa_all', 'del_asa_all', 'sbr_all', 'rasa_all', 'del_rasa_all', 'hydrophobicity', 'hydrophilicity']
+(blossom) Jimmys-MacBook-Pro:src jimmykang$ python main.py
+THIS IS THE CORRECT PATH
+
+MASTER TRAINING DATAFRAME - PRE NORMALIZATION
+     masa_all  del_asa_all  sbr_all  rasa_all  del_rasa_all  hotspot  blosum_a  blosum_c  blosum_d  ...  pssm_y  pssm_v  HSEBD  HSEAU  HSEAD  HSEBU   CN  RD  Rda
+0          51           30      0.6       0.3           0.2        0        -1        -4         2  ...      -1       0   22.0   21.0   24.0   23.0 45.0 2.9  3.7
+1          39           33      0.8       0.2           0.1        0        -3        -2        -4  ...       1      -1   20.0   23.0   23.0   26.0 46.0 2.9  4.6
+2          42           36      0.9       0.2           0.2        1        -3        -2        -4  ...       0      -2   23.0   22.0   27.0   26.0 49.0 3.5  4.3
+3          58           30      0.5       0.3           0.2        0        -1        -4         2  ...       2      -1   14.0   10.0   29.0   25.0 39.0 3.0  3.6
+4           3            3      1.0       0.0           0.0        0         1        -1         0  ...       1      -2   22.0   25.0   23.0   26.0 48.0 6.2  6.5
+..        ...          ...      ...       ...           ...      ...       ...       ...       ...  ...     ...     ...    ...    ...    ...    ...  ...  ..  ...
+308        82           65      0.8       0.5           0.4        1        -1        -1        -4  ...      -1       1   16.0   18.0   14.0   16.0 32.0 2.8  3.1
+309       147            0      0.0       0.7           0.0        0        -1        -3        -1  ...      -2      -2   12.0    5.0   12.0    5.0 17.0 1.9  2.0
+310       137           64      0.5       0.7           0.3        0        -1        -3         0  ...      -1      -2   18.0   15.0    7.0    4.0 22.0 1.9  2.0
+311        81           81      1.0       0.6           0.6        1         0        -1        -3  ...      -1       4   24.0   23.0   13.0   12.0 36.0 4.6  5.2
+312       192          138      0.7       0.8           0.6        1        -3        -2        -4  ...       2      -3   18.0   20.0   12.0   14.0 32.0 2.2  2.0
+
+[313 rows x 59 columns]
+MASTER TESTING DATAFRAME - PRE NORMALIZATION
+     masa_all  del_asa_all  sbr_all  rasa_all  del_rasa_all  hotspot  blosum_a  blosum_c  blosum_d  ...  pssm_y  pssm_v  HSEBD  HSEAU  HSEAD  HSEBU   CN  RD  Rda
+0          52           24      0.5       0.3           0.1        0        -2        -2        -3  ...       2       0   16.0   18.0   21.0   23.0 39.0 3.3  4.5
+1          50           49      1.0       0.3           0.2        0        -2        -2        -3  ...       3      -1   30.0   28.0   20.0   18.0 48.0 5.5  4.0
+2          43           42      1.0       0.2           0.2        1        -2        -2        -3  ...       5      -2   29.0   32.0   18.0   21.0 50.0 4.4  3.1
+3         163           96      0.6       0.8           0.5        0        -1        -3        -1  ...      -2      -2   20.0   19.0   22.0   21.0 41.0 2.4  2.0
+4         190          188      1.0       0.8           0.8        1        -3        -2        -4  ...       2      -3   22.0   30.0   19.0   27.0 49.0 5.0  5.4
+..        ...          ...      ...       ...           ...      ...       ...       ...       ...  ...     ...     ...    ...    ...    ...    ...  ...  ..  ...
+121       123          120      1.0       0.8           0.7        0        -2        -3         6  ...       2       0   25.0   39.0   16.0   30.0 55.0 2.7  2.4
+122        80           74      0.9       0.3           0.3        0        -1        -3        -2  ...      -2      -3   28.0   25.0   21.0   18.0 46.0 4.4  3.2
+123       106           41      0.4       0.4           0.2        0        -1        -3        -2  ...      -2       0   15.0   18.0   27.0   30.0 45.0 2.4  3.0
+124       128           79      0.6       0.6           0.4        0        -2        -2        -3  ...       6      -1    3.0    2.0    8.0    7.0 10.0 2.2  2.0
+125        66           41      0.6       0.3           0.2        0        -2        -2        -3  ...       7      -3   20.0   21.0   27.0   28.0 48.0 3.4  4.6
+
+[126 rows x 59 columns]
+master_training_dataframe
+     masa_all  del_asa_all  sbr_all  rasa_all  del_rasa_all  hotspot  blosum_a  blosum_c  blosum_d  ...  pssm_y  pssm_v  HSEBD  HSEAU  HSEAD  HSEBU    CN   RD  Rda
+0        -3.6         -2.9     -0.6      -4.1          -3.1        0       1.0      -8.3       4.8  ...    -1.6     3.9    1.5    1.0    0.8    0.2   1.3 -1.6 -0.4
+1        -4.8         -2.5      3.6      -5.9          -3.3        0      -9.3       1.9      -6.0  ...     1.9     1.1    0.1    2.4   -0.1    2.8   1.9 -1.5  1.1
+2        -4.5         -2.1      3.8      -5.7          -3.0        1      -9.3       1.9      -6.0  ...     0.1    -1.7    2.2    1.7    3.5    2.8   3.5 -0.4  0.6
+3        -2.9         -2.9     -1.7      -3.4          -3.1        0       1.0      -8.3       4.8  ...     3.6     1.1   -4.1   -6.6    5.3    1.9  -2.0 -1.4 -0.7
+4        -8.3         -6.1      6.1      -8.9          -6.1        0      11.3       7.0       1.2  ...     1.9    -1.7    1.5    3.8   -0.1    2.8   3.0  4.6  4.6
+..        ...          ...      ...       ...           ...      ...       ...       ...       ...  ...     ...     ...    ...    ...    ...    ...   ...  ...  ...
+308      -0.5          1.3      2.8       0.7           2.4        1       1.0       7.0      -6.0  ...    -1.6     6.6   -2.7   -1.1   -8.1   -6.0  -5.8 -1.8 -1.6
+309       6.0         -6.4    -10.2       5.0          -6.6        0       1.0      -3.2      -0.6  ...    -3.3    -1.7   -5.4  -10.1   -9.9  -15.6 -14.1 -3.5 -3.6
+310       5.0          1.2     -2.6       4.5           0.7        0       1.0      -3.2       1.2  ...    -1.6    -1.7   -1.3   -3.1  -14.4  -16.5 -11.3 -3.5 -3.6
+311      -0.6          3.2      6.1       2.1           6.4        1       6.1       7.0      -4.2  ...    -1.6    14.9    2.9    2.4   -9.0   -9.5  -3.6  1.7  2.2
+312      10.5         10.0      1.5       7.6           7.2        1      -9.3       1.9      -6.0  ...     3.6    -4.4   -1.3    0.3   -9.9   -7.7  -5.8 -2.9 -3.6
+
+[313 rows x 59 columns]
+master_testing_dataframe
+     masa_all  del_asa_all  sbr_all  rasa_all  del_rasa_all  hotspot  blosum_a  blosum_c  blosum_d  ...  pssm_y  pssm_v  HSEBD  HSEAU  HSEAD  HSEBU    CN   RD  Rda
+0        -4.2         -4.3     -3.9      -4.9          -4.8        0      -4.7       0.8      -3.5  ...     4.6     3.1   -2.2   -0.7   -0.1    0.9  -1.0 -1.2 -1.0
+1        -4.4         -1.3      5.9      -5.1          -1.8        0      -4.7       0.8      -3.5  ...     6.5     0.3    7.3    5.8   -0.8   -2.8   3.4 -0.9 -1.1
+2        -5.1         -2.2      5.8      -5.8          -2.6        1      -4.7       0.8      -3.5  ...    10.2    -2.4    6.6    8.4   -2.1   -0.6   4.4 -1.0 -1.2
+3         7.2          4.3     -1.5       5.9           3.3        0       0.5      -2.8       0.6  ...    -2.9    -2.4    0.5   -0.1    0.6   -0.6  -0.0 -1.3 -1.4
+4        10.0         15.4      6.1       6.8          11.7        1      -9.9       0.8      -5.6  ...     4.6    -5.1    1.8    7.1   -1.4    3.8   3.9 -0.9 -0.9
+..        ...          ...      ...       ...           ...      ...       ...       ...       ...  ...     ...     ...    ...    ...    ...    ...   ...  ...  ...
+121       3.1          7.2      5.8       5.1           9.6        0      -4.7      -2.8      15.2  ...     4.6     3.1    3.9   13.0   -3.5    6.0   6.8 -1.3 -1.3
+122      -1.3          1.7      4.9      -3.7          -0.7        0       0.5      -2.8      -1.5  ...    -2.9    -5.1    5.9    3.9   -0.1   -2.8   2.4 -1.0 -1.2
+123       1.4         -2.3     -5.3      -1.6          -3.8        0       0.5      -2.8      -1.5  ...    -2.9     3.1   -2.9   -0.7    4.0    6.0   1.9 -1.3 -1.2
+124       3.6          2.3     -0.9       3.0           1.7        0      -4.7       0.8      -3.5  ...    12.1     0.3  -11.1  -11.2   -8.9  -10.8 -15.3 -1.3 -1.4
+125      -2.7         -2.3     -0.9      -4.2          -3.3        0      -4.7       0.8      -3.5  ...    14.0    -5.1    0.5    1.3    4.0    4.6   3.4 -1.2 -1.0
+
+[126 rows x 59 columns]
+Train model?(y/n):y
+
+WARNING: The TensorFlow contrib module will not be included in TensorFlow 2.0.
+For more information, please see:
+  * https://github.com/tensorflow/community/blob/master/rfcs/20180907-contrib-sunset.md
+  * https://github.com/tensorflow/addons
+If you depend on functionality not listed there, please file an issue.
+
+creating DNNClassifier object...
+creating input functions...
+TRAINING TARGETS
+     hotspot
+0          0
+1          0
+2          1
+3          0
+4          0
+..       ...
+308        1
+309        0
+310        0
+311        1
+312        1
+
+[313 rows x 1 columns]
+Training model...
+Success Rate (on training data):
+2019-06-12 15:44:04.439975: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2019-06-12 15:44:04.440827: I tensorflow/core/common_runtime/process_util.cc:71] Creating new thread pool with default inter op setting: 12. Tune using inter_op_parallelism_threads for best performance.
+  period 00 : 0.70
+  period 01 : 0.70
+  period 02 : 0.70
+  period 03 : 0.70
+  period 04 : 0.70
+  period 05 : 0.70
+  period 06 : 0.70
+  period 07 : 0.70
+  period 08 : 0.70
+  period 09 : 0.70
+Final success rate(on training data):   0.70
+Final success rate (on validation data): 0.75
+Training Sensitivity: 0.5225563909774437
+Training Specificity: 0.8294444444444444
+Validation Sensitivity: 0.6282051282051282
+Validation Specificity: 0.8057471264367816
+Model training finished
+learning rate: 0.07
+l1 strength: 0.07
+hidden units: [7, 5, 3, 1]
+used features: ['masa_all', 'del_asa_all', 'sbr_all', 'rasa_all', 'del_rasa_all', 'hydrophobicity', 'hydrophilicity']
+(blossom) Jimmys-MacBook-Pro:src jimmykang$ python main.py
+THIS IS THE CORRECT PATH
+
+MASTER TRAINING DATAFRAME - PRE NORMALIZATION
+     masa_all  del_asa_all  sbr_all  rasa_all  del_rasa_all  hotspot  blosum_a  blosum_c  blosum_d  ...  pssm_y  pssm_v  HSEBD  HSEAU  HSEAD  HSEBU   CN  RD  Rda
+0          51           30      0.6       0.3           0.2        0        -1        -4         2  ...      -1       0   22.0   21.0   24.0   23.0 45.0 2.9  3.7
+1          39           33      0.8       0.2           0.1        0        -3        -2        -4  ...       1      -1   20.0   23.0   23.0   26.0 46.0 2.9  4.6
+2          42           36      0.9       0.2           0.2        1        -3        -2        -4  ...       0      -2   23.0   22.0   27.0   26.0 49.0 3.5  4.3
+3          58           30      0.5       0.3           0.2        0        -1        -4         2  ...       2      -1   14.0   10.0   29.0   25.0 39.0 3.0  3.6
+4           3            3      1.0       0.0           0.0        0         1        -1         0  ...       1      -2   22.0   25.0   23.0   26.0 48.0 6.2  6.5
+..        ...          ...      ...       ...           ...      ...       ...       ...       ...  ...     ...     ...    ...    ...    ...    ...  ...  ..  ...
+308        82           65      0.8       0.5           0.4        1        -1        -1        -4  ...      -1       1   16.0   18.0   14.0   16.0 32.0 2.8  3.1
+309       147            0      0.0       0.7           0.0        0        -1        -3        -1  ...      -2      -2   12.0    5.0   12.0    5.0 17.0 1.9  2.0
+310       137           64      0.5       0.7           0.3        0        -1        -3         0  ...      -1      -2   18.0   15.0    7.0    4.0 22.0 1.9  2.0
+311        81           81      1.0       0.6           0.6        1         0        -1        -3  ...      -1       4   24.0   23.0   13.0   12.0 36.0 4.6  5.2
+312       192          138      0.7       0.8           0.6        1        -3        -2        -4  ...       2      -3   18.0   20.0   12.0   14.0 32.0 2.2  2.0
+
+[313 rows x 59 columns]
+MASTER TESTING DATAFRAME - PRE NORMALIZATION
+     masa_all  del_asa_all  sbr_all  rasa_all  del_rasa_all  hotspot  blosum_a  blosum_c  blosum_d  ...  pssm_y  pssm_v  HSEBD  HSEAU  HSEAD  HSEBU   CN  RD  Rda
+0          52           24      0.5       0.3           0.1        0        -2        -2        -3  ...       2       0   16.0   18.0   21.0   23.0 39.0 3.3  4.5
+1          50           49      1.0       0.3           0.2        0        -2        -2        -3  ...       3      -1   30.0   28.0   20.0   18.0 48.0 5.5  4.0
+2          43           42      1.0       0.2           0.2        1        -2        -2        -3  ...       5      -2   29.0   32.0   18.0   21.0 50.0 4.4  3.1
+3         163           96      0.6       0.8           0.5        0        -1        -3        -1  ...      -2      -2   20.0   19.0   22.0   21.0 41.0 2.4  2.0
+4         190          188      1.0       0.8           0.8        1        -3        -2        -4  ...       2      -3   22.0   30.0   19.0   27.0 49.0 5.0  5.4
+..        ...          ...      ...       ...           ...      ...       ...       ...       ...  ...     ...     ...    ...    ...    ...    ...  ...  ..  ...
+121       123          120      1.0       0.8           0.7        0        -2        -3         6  ...       2       0   25.0   39.0   16.0   30.0 55.0 2.7  2.4
+122        80           74      0.9       0.3           0.3        0        -1        -3        -2  ...      -2      -3   28.0   25.0   21.0   18.0 46.0 4.4  3.2
+123       106           41      0.4       0.4           0.2        0        -1        -3        -2  ...      -2       0   15.0   18.0   27.0   30.0 45.0 2.4  3.0
+124       128           79      0.6       0.6           0.4        0        -2        -2        -3  ...       6      -1    3.0    2.0    8.0    7.0 10.0 2.2  2.0
+125        66           41      0.6       0.3           0.2        0        -2        -2        -3  ...       7      -3   20.0   21.0   27.0   28.0 48.0 3.4  4.6
+
+[126 rows x 59 columns]
+master_training_dataframe
+     masa_all  del_asa_all  sbr_all  rasa_all  del_rasa_all  hotspot  blosum_a  blosum_c  blosum_d  ...  pssm_y  pssm_v  HSEBD  HSEAU  HSEAD  HSEBU    CN   RD  Rda
+0        -3.6         -2.9     -0.6      -4.1          -3.1        0       1.0      -8.3       4.8  ...    -1.6     3.9    1.5    1.0    0.8    0.2   1.3 -1.6 -0.4
+1        -4.8         -2.5      3.6      -5.9          -3.3        0      -9.3       1.9      -6.0  ...     1.9     1.1    0.1    2.4   -0.1    2.8   1.9 -1.5  1.1
+2        -4.5         -2.1      3.8      -5.7          -3.0        1      -9.3       1.9      -6.0  ...     0.1    -1.7    2.2    1.7    3.5    2.8   3.5 -0.4  0.6
+3        -2.9         -2.9     -1.7      -3.4          -3.1        0       1.0      -8.3       4.8  ...     3.6     1.1   -4.1   -6.6    5.3    1.9  -2.0 -1.4 -0.7
+4        -8.3         -6.1      6.1      -8.9          -6.1        0      11.3       7.0       1.2  ...     1.9    -1.7    1.5    3.8   -0.1    2.8   3.0  4.6  4.6
+..        ...          ...      ...       ...           ...      ...       ...       ...       ...  ...     ...     ...    ...    ...    ...    ...   ...  ...  ...
+308      -0.5          1.3      2.8       0.7           2.4        1       1.0       7.0      -6.0  ...    -1.6     6.6   -2.7   -1.1   -8.1   -6.0  -5.8 -1.8 -1.6
+309       6.0         -6.4    -10.2       5.0          -6.6        0       1.0      -3.2      -0.6  ...    -3.3    -1.7   -5.4  -10.1   -9.9  -15.6 -14.1 -3.5 -3.6
+310       5.0          1.2     -2.6       4.5           0.7        0       1.0      -3.2       1.2  ...    -1.6    -1.7   -1.3   -3.1  -14.4  -16.5 -11.3 -3.5 -3.6
+311      -0.6          3.2      6.1       2.1           6.4        1       6.1       7.0      -4.2  ...    -1.6    14.9    2.9    2.4   -9.0   -9.5  -3.6  1.7  2.2
+312      10.5         10.0      1.5       7.6           7.2        1      -9.3       1.9      -6.0  ...     3.6    -4.4   -1.3    0.3   -9.9   -7.7  -5.8 -2.9 -3.6
+
+[313 rows x 59 columns]
+master_testing_dataframe
+     masa_all  del_asa_all  sbr_all  rasa_all  del_rasa_all  hotspot  blosum_a  blosum_c  blosum_d  ...  pssm_y  pssm_v  HSEBD  HSEAU  HSEAD  HSEBU    CN   RD  Rda
+0        -4.2         -4.3     -3.9      -4.9          -4.8        0      -4.7       0.8      -3.5  ...     4.6     3.1   -2.2   -0.7   -0.1    0.9  -1.0 -1.2 -1.0
+1        -4.4         -1.3      5.9      -5.1          -1.8        0      -4.7       0.8      -3.5  ...     6.5     0.3    7.3    5.8   -0.8   -2.8   3.4 -0.9 -1.1
+2        -5.1         -2.2      5.8      -5.8          -2.6        1      -4.7       0.8      -3.5  ...    10.2    -2.4    6.6    8.4   -2.1   -0.6   4.4 -1.0 -1.2
+3         7.2          4.3     -1.5       5.9           3.3        0       0.5      -2.8       0.6  ...    -2.9    -2.4    0.5   -0.1    0.6   -0.6  -0.0 -1.3 -1.4
+4        10.0         15.4      6.1       6.8          11.7        1      -9.9       0.8      -5.6  ...     4.6    -5.1    1.8    7.1   -1.4    3.8   3.9 -0.9 -0.9
+..        ...          ...      ...       ...           ...      ...       ...       ...       ...  ...     ...     ...    ...    ...    ...    ...   ...  ...  ...
+121       3.1          7.2      5.8       5.1           9.6        0      -4.7      -2.8      15.2  ...     4.6     3.1    3.9   13.0   -3.5    6.0   6.8 -1.3 -1.3
+122      -1.3          1.7      4.9      -3.7          -0.7        0       0.5      -2.8      -1.5  ...    -2.9    -5.1    5.9    3.9   -0.1   -2.8   2.4 -1.0 -1.2
+123       1.4         -2.3     -5.3      -1.6          -3.8        0       0.5      -2.8      -1.5  ...    -2.9     3.1   -2.9   -0.7    4.0    6.0   1.9 -1.3 -1.2
+124       3.6          2.3     -0.9       3.0           1.7        0      -4.7       0.8      -3.5  ...    12.1     0.3  -11.1  -11.2   -8.9  -10.8 -15.3 -1.3 -1.4
+125      -2.7         -2.3     -0.9      -4.2          -3.3        0      -4.7       0.8      -3.5  ...    14.0    -5.1    0.5    1.3    4.0    4.6   3.4 -1.2 -1.0
+
+[126 rows x 59 columns]
+Train model?(y/n):y
+
+WARNING: The TensorFlow contrib module will not be included in TensorFlow 2.0.
+For more information, please see:
+  * https://github.com/tensorflow/community/blob/master/rfcs/20180907-contrib-sunset.md
+  * https://github.com/tensorflow/addons
+If you depend on functionality not listed there, please file an issue.
+
+creating DNNClassifier object...
+creating input functions...
+TRAINING TARGETS
+     hotspot
+0          0
+1          0
+2          1
+3          0
+4          0
+..       ...
+308        1
+309        0
+310        0
+311        1
+312        1
+
+[313 rows x 1 columns]
+Training model...
+Success Rate (on training data):
+2019-06-12 19:25:15.404383: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2019-06-12 19:25:15.406407: I tensorflow/core/common_runtime/process_util.cc:71] Creating new thread pool with default inter op setting: 12. Tune using inter_op_parallelism_threads for best performance.
+  period 00 : 0.58
+  period 01 : 0.58
+  period 02 : 0.58
+  period 03 : 0.58
+  period 04 : 0.58
+  period 05 : 0.58
+  period 06 : 0.58
+  period 07 : 0.58
+  period 08 : 0.58
+  period 09 : 0.58
+Final success rate(on training data):   0.58
+Final success rate (on validation data): 0.69
+Training Sensitivity: 0.0
+Training Specificity: 1.0
+Validation Sensitivity: 0.0
+Validation Specificity: 1.0
+Model training finished
+learning rate: 0.07
+l1 strength: 0.07
+hidden units: [7, 5, 3, 1]
+used features: ['masa_all', 'del_asa_all', 'sbr_all', 'rasa_all', 'del_rasa_all', 'hydrophobicity', 'hydrophilicity']
+(blossom) Jimmys-MacBook-Pro:src jimmykang$ python main.py
+THIS IS THE CORRECT PATH
+
+MASTER TRAINING DATAFRAME - PRE NORMALIZATION
+     masa_all  del_asa_all  sbr_all  rasa_all  del_rasa_all  hotspot  blosum_a  blosum_c  blosum_d  ...  pssm_y  pssm_v  HSEBD  HSEAU  HSEAD  HSEBU   CN  RD  Rda
+0          51           30      0.6       0.3           0.2        0        -1        -4         2  ...      -1       0   22.0   21.0   24.0   23.0 45.0 2.9  3.7
+1          39           33      0.8       0.2           0.1        0        -3        -2        -4  ...       1      -1   20.0   23.0   23.0   26.0 46.0 2.9  4.6
+2          42           36      0.9       0.2           0.2        1        -3        -2        -4  ...       0      -2   23.0   22.0   27.0   26.0 49.0 3.5  4.3
+3          58           30      0.5       0.3           0.2        0        -1        -4         2  ...       2      -1   14.0   10.0   29.0   25.0 39.0 3.0  3.6
+4           3            3      1.0       0.0           0.0        0         1        -1         0  ...       1      -2   22.0   25.0   23.0   26.0 48.0 6.2  6.5
+..        ...          ...      ...       ...           ...      ...       ...       ...       ...  ...     ...     ...    ...    ...    ...    ...  ...  ..  ...
+308        82           65      0.8       0.5           0.4        1        -1        -1        -4  ...      -1       1   16.0   18.0   14.0   16.0 32.0 2.8  3.1
+309       147            0      0.0       0.7           0.0        0        -1        -3        -1  ...      -2      -2   12.0    5.0   12.0    5.0 17.0 1.9  2.0
+310       137           64      0.5       0.7           0.3        0        -1        -3         0  ...      -1      -2   18.0   15.0    7.0    4.0 22.0 1.9  2.0
+311        81           81      1.0       0.6           0.6        1         0        -1        -3  ...      -1       4   24.0   23.0   13.0   12.0 36.0 4.6  5.2
+312       192          138      0.7       0.8           0.6        1        -3        -2        -4  ...       2      -3   18.0   20.0   12.0   14.0 32.0 2.2  2.0
+
+[313 rows x 59 columns]
+MASTER TESTING DATAFRAME - PRE NORMALIZATION
+     masa_all  del_asa_all  sbr_all  rasa_all  del_rasa_all  hotspot  blosum_a  blosum_c  blosum_d  ...  pssm_y  pssm_v  HSEBD  HSEAU  HSEAD  HSEBU   CN  RD  Rda
+0          52           24      0.5       0.3           0.1        0        -2        -2        -3  ...       2       0   16.0   18.0   21.0   23.0 39.0 3.3  4.5
+1          50           49      1.0       0.3           0.2        0        -2        -2        -3  ...       3      -1   30.0   28.0   20.0   18.0 48.0 5.5  4.0
+2          43           42      1.0       0.2           0.2        1        -2        -2        -3  ...       5      -2   29.0   32.0   18.0   21.0 50.0 4.4  3.1
+3         163           96      0.6       0.8           0.5        0        -1        -3        -1  ...      -2      -2   20.0   19.0   22.0   21.0 41.0 2.4  2.0
+4         190          188      1.0       0.8           0.8        1        -3        -2        -4  ...       2      -3   22.0   30.0   19.0   27.0 49.0 5.0  5.4
+..        ...          ...      ...       ...           ...      ...       ...       ...       ...  ...     ...     ...    ...    ...    ...    ...  ...  ..  ...
+121       123          120      1.0       0.8           0.7        0        -2        -3         6  ...       2       0   25.0   39.0   16.0   30.0 55.0 2.7  2.4
+122        80           74      0.9       0.3           0.3        0        -1        -3        -2  ...      -2      -3   28.0   25.0   21.0   18.0 46.0 4.4  3.2
+123       106           41      0.4       0.4           0.2        0        -1        -3        -2  ...      -2       0   15.0   18.0   27.0   30.0 45.0 2.4  3.0
+124       128           79      0.6       0.6           0.4        0        -2        -2        -3  ...       6      -1    3.0    2.0    8.0    7.0 10.0 2.2  2.0
+125        66           41      0.6       0.3           0.2        0        -2        -2        -3  ...       7      -3   20.0   21.0   27.0   28.0 48.0 3.4  4.6
+
+[126 rows x 59 columns]
+master_training_dataframe
+     masa_all  del_asa_all  sbr_all  rasa_all  del_rasa_all  hotspot  blosum_a  blosum_c  blosum_d  ...  pssm_y  pssm_v  HSEBD  HSEAU  HSEAD  HSEBU    CN   RD  Rda
+0        -3.6         -2.9     -0.6      -4.1          -3.1        0       1.0      -8.3       4.8  ...    -1.6     3.9    1.5    1.0    0.8    0.2   1.3 -1.6 -0.4
+1        -4.8         -2.5      3.6      -5.9          -3.3        0      -9.3       1.9      -6.0  ...     1.9     1.1    0.1    2.4   -0.1    2.8   1.9 -1.5  1.1
+2        -4.5         -2.1      3.8      -5.7          -3.0        1      -9.3       1.9      -6.0  ...     0.1    -1.7    2.2    1.7    3.5    2.8   3.5 -0.4  0.6
+3        -2.9         -2.9     -1.7      -3.4          -3.1        0       1.0      -8.3       4.8  ...     3.6     1.1   -4.1   -6.6    5.3    1.9  -2.0 -1.4 -0.7
+4        -8.3         -6.1      6.1      -8.9          -6.1        0      11.3       7.0       1.2  ...     1.9    -1.7    1.5    3.8   -0.1    2.8   3.0  4.6  4.6
+..        ...          ...      ...       ...           ...      ...       ...       ...       ...  ...     ...     ...    ...    ...    ...    ...   ...  ...  ...
+308      -0.5          1.3      2.8       0.7           2.4        1       1.0       7.0      -6.0  ...    -1.6     6.6   -2.7   -1.1   -8.1   -6.0  -5.8 -1.8 -1.6
+309       6.0         -6.4    -10.2       5.0          -6.6        0       1.0      -3.2      -0.6  ...    -3.3    -1.7   -5.4  -10.1   -9.9  -15.6 -14.1 -3.5 -3.6
+310       5.0          1.2     -2.6       4.5           0.7        0       1.0      -3.2       1.2  ...    -1.6    -1.7   -1.3   -3.1  -14.4  -16.5 -11.3 -3.5 -3.6
+311      -0.6          3.2      6.1       2.1           6.4        1       6.1       7.0      -4.2  ...    -1.6    14.9    2.9    2.4   -9.0   -9.5  -3.6  1.7  2.2
+312      10.5         10.0      1.5       7.6           7.2        1      -9.3       1.9      -6.0  ...     3.6    -4.4   -1.3    0.3   -9.9   -7.7  -5.8 -2.9 -3.6
+
+[313 rows x 59 columns]
+master_testing_dataframe
+     masa_all  del_asa_all  sbr_all  rasa_all  del_rasa_all  hotspot  blosum_a  blosum_c  blosum_d  ...  pssm_y  pssm_v  HSEBD  HSEAU  HSEAD  HSEBU    CN   RD  Rda
+0        -4.2         -4.3     -3.9      -4.9          -4.8        0      -4.7       0.8      -3.5  ...     4.6     3.1   -2.2   -0.7   -0.1    0.9  -1.0 -1.2 -1.0
+1        -4.4         -1.3      5.9      -5.1          -1.8        0      -4.7       0.8      -3.5  ...     6.5     0.3    7.3    5.8   -0.8   -2.8   3.4 -0.9 -1.1
+2        -5.1         -2.2      5.8      -5.8          -2.6        1      -4.7       0.8      -3.5  ...    10.2    -2.4    6.6    8.4   -2.1   -0.6   4.4 -1.0 -1.2
+3         7.2          4.3     -1.5       5.9           3.3        0       0.5      -2.8       0.6  ...    -2.9    -2.4    0.5   -0.1    0.6   -0.6  -0.0 -1.3 -1.4
+4        10.0         15.4      6.1       6.8          11.7        1      -9.9       0.8      -5.6  ...     4.6    -5.1    1.8    7.1   -1.4    3.8   3.9 -0.9 -0.9
+..        ...          ...      ...       ...           ...      ...       ...       ...       ...  ...     ...     ...    ...    ...    ...    ...   ...  ...  ...
+121       3.1          7.2      5.8       5.1           9.6        0      -4.7      -2.8      15.2  ...     4.6     3.1    3.9   13.0   -3.5    6.0   6.8 -1.3 -1.3
+122      -1.3          1.7      4.9      -3.7          -0.7        0       0.5      -2.8      -1.5  ...    -2.9    -5.1    5.9    3.9   -0.1   -2.8   2.4 -1.0 -1.2
+123       1.4         -2.3     -5.3      -1.6          -3.8        0       0.5      -2.8      -1.5  ...    -2.9     3.1   -2.9   -0.7    4.0    6.0   1.9 -1.3 -1.2
+124       3.6          2.3     -0.9       3.0           1.7        0      -4.7       0.8      -3.5  ...    12.1     0.3  -11.1  -11.2   -8.9  -10.8 -15.3 -1.3 -1.4
+125      -2.7         -2.3     -0.9      -4.2          -3.3        0      -4.7       0.8      -3.5  ...    14.0    -5.1    0.5    1.3    4.0    4.6   3.4 -1.2 -1.0
+
+[126 rows x 59 columns]
+Train model?(y/n):y
+
+WARNING: The TensorFlow contrib module will not be included in TensorFlow 2.0.
+For more information, please see:
+  * https://github.com/tensorflow/community/blob/master/rfcs/20180907-contrib-sunset.md
+  * https://github.com/tensorflow/addons
+If you depend on functionality not listed there, please file an issue.
+
+creating DNNClassifier object...
+creating input functions...
+TRAINING TARGETS
+     hotspot
+0          0
+1          0
+2          1
+3          0
+4          0
+..       ...
+308        1
+309        0
+310        0
+311        1
+312        1
+
+[313 rows x 1 columns]
+Training model...
+Success Rate (on training data):
+2019-06-12 20:46:18.012644: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2019-06-12 20:46:18.012895: I tensorflow/core/common_runtime/process_util.cc:71] Creating new thread pool with default inter op setting: 12. Tune using inter_op_parallelism_threads for best performance.
+  period 00 : 0.80
+  period 01 : 0.80
+  period 02 : 0.80
+  period 03 : 0.80
+  period 04 : 0.80
+  period 05 : 0.80
+  period 06 : 0.80
+  period 07 : 0.80
+  period 08 : 0.81
+  period 09 : 0.81
+Final success rate(on training data):   0.81
+Final success rate (on validation data): 0.65
+Training Sensitivity: 0.8075187969924812
+Training Specificity: 0.8038888888888889
+Validation Sensitivity: 0.6717948717948717
+Validation Specificity: 0.6425287356321839
+Model training finished
+learning rate: 0.07
+l1 strength: 0.003
+hidden units: [7, 5, 3, 1]
+used features: ['masa_all', 'del_asa_all', 'sbr_all', 'rasa_all', 'del_rasa_all', 'hydrophobicity', 'hydrophilicity']
+(blossom) Jimmys-MacBook-Pro:src jimmykang$ python main.py
+THIS IS THE CORRECT PATH
+
+MASTER TRAINING DATAFRAME - PRE NORMALIZATION
+     masa_all  del_asa_all  sbr_all  rasa_all  del_rasa_all  hotspot  blosum_a  blosum_c  blosum_d  ...  pssm_y  pssm_v  HSEBD  HSEAU  HSEAD  HSEBU   CN  RD  Rda
+0          51           30      0.6       0.3           0.2        0        -1        -4         2  ...      -1       0   22.0   21.0   24.0   23.0 45.0 2.9  3.7
+1          39           33      0.8       0.2           0.1        0        -3        -2        -4  ...       1      -1   20.0   23.0   23.0   26.0 46.0 2.9  4.6
+2          42           36      0.9       0.2           0.2        1        -3        -2        -4  ...       0      -2   23.0   22.0   27.0   26.0 49.0 3.5  4.3
+3          58           30      0.5       0.3           0.2        0        -1        -4         2  ...       2      -1   14.0   10.0   29.0   25.0 39.0 3.0  3.6
+4           3            3      1.0       0.0           0.0        0         1        -1         0  ...       1      -2   22.0   25.0   23.0   26.0 48.0 6.2  6.5
+..        ...          ...      ...       ...           ...      ...       ...       ...       ...  ...     ...     ...    ...    ...    ...    ...  ...  ..  ...
+308        82           65      0.8       0.5           0.4        1        -1        -1        -4  ...      -1       1   16.0   18.0   14.0   16.0 32.0 2.8  3.1
+309       147            0      0.0       0.7           0.0        0        -1        -3        -1  ...      -2      -2   12.0    5.0   12.0    5.0 17.0 1.9  2.0
+310       137           64      0.5       0.7           0.3        0        -1        -3         0  ...      -1      -2   18.0   15.0    7.0    4.0 22.0 1.9  2.0
+311        81           81      1.0       0.6           0.6        1         0        -1        -3  ...      -1       4   24.0   23.0   13.0   12.0 36.0 4.6  5.2
+312       192          138      0.7       0.8           0.6        1        -3        -2        -4  ...       2      -3   18.0   20.0   12.0   14.0 32.0 2.2  2.0
+
+[313 rows x 59 columns]
+MASTER TESTING DATAFRAME - PRE NORMALIZATION
+     masa_all  del_asa_all  sbr_all  rasa_all  del_rasa_all  hotspot  blosum_a  blosum_c  blosum_d  ...  pssm_y  pssm_v  HSEBD  HSEAU  HSEAD  HSEBU   CN  RD  Rda
+0          52           24      0.5       0.3           0.1        0        -2        -2        -3  ...       2       0   16.0   18.0   21.0   23.0 39.0 3.3  4.5
+1          50           49      1.0       0.3           0.2        0        -2        -2        -3  ...       3      -1   30.0   28.0   20.0   18.0 48.0 5.5  4.0
+2          43           42      1.0       0.2           0.2        1        -2        -2        -3  ...       5      -2   29.0   32.0   18.0   21.0 50.0 4.4  3.1
+3         163           96      0.6       0.8           0.5        0        -1        -3        -1  ...      -2      -2   20.0   19.0   22.0   21.0 41.0 2.4  2.0
+4         190          188      1.0       0.8           0.8        1        -3        -2        -4  ...       2      -3   22.0   30.0   19.0   27.0 49.0 5.0  5.4
+..        ...          ...      ...       ...           ...      ...       ...       ...       ...  ...     ...     ...    ...    ...    ...    ...  ...  ..  ...
+121       123          120      1.0       0.8           0.7        0        -2        -3         6  ...       2       0   25.0   39.0   16.0   30.0 55.0 2.7  2.4
+122        80           74      0.9       0.3           0.3        0        -1        -3        -2  ...      -2      -3   28.0   25.0   21.0   18.0 46.0 4.4  3.2
+123       106           41      0.4       0.4           0.2        0        -1        -3        -2  ...      -2       0   15.0   18.0   27.0   30.0 45.0 2.4  3.0
+124       128           79      0.6       0.6           0.4        0        -2        -2        -3  ...       6      -1    3.0    2.0    8.0    7.0 10.0 2.2  2.0
+125        66           41      0.6       0.3           0.2        0        -2        -2        -3  ...       7      -3   20.0   21.0   27.0   28.0 48.0 3.4  4.6
+
+[126 rows x 59 columns]
+master_training_dataframe
+     masa_all  del_asa_all  sbr_all  rasa_all  del_rasa_all  hotspot  blosum_a  blosum_c  blosum_d  ...  pssm_y  pssm_v  HSEBD  HSEAU  HSEAD  HSEBU    CN   RD  Rda
+0        -3.6         -2.9     -0.6      -4.1          -3.1        0       1.0      -8.3       4.8  ...    -1.6     3.9    1.5    1.0    0.8    0.2   1.3 -1.6 -0.4
+1        -4.8         -2.5      3.6      -5.9          -3.3        0      -9.3       1.9      -6.0  ...     1.9     1.1    0.1    2.4   -0.1    2.8   1.9 -1.5  1.1
+2        -4.5         -2.1      3.8      -5.7          -3.0        1      -9.3       1.9      -6.0  ...     0.1    -1.7    2.2    1.7    3.5    2.8   3.5 -0.4  0.6
+3        -2.9         -2.9     -1.7      -3.4          -3.1        0       1.0      -8.3       4.8  ...     3.6     1.1   -4.1   -6.6    5.3    1.9  -2.0 -1.4 -0.7
+4        -8.3         -6.1      6.1      -8.9          -6.1        0      11.3       7.0       1.2  ...     1.9    -1.7    1.5    3.8   -0.1    2.8   3.0  4.6  4.6
+..        ...          ...      ...       ...           ...      ...       ...       ...       ...  ...     ...     ...    ...    ...    ...    ...   ...  ...  ...
+308      -0.5          1.3      2.8       0.7           2.4        1       1.0       7.0      -6.0  ...    -1.6     6.6   -2.7   -1.1   -8.1   -6.0  -5.8 -1.8 -1.6
+309       6.0         -6.4    -10.2       5.0          -6.6        0       1.0      -3.2      -0.6  ...    -3.3    -1.7   -5.4  -10.1   -9.9  -15.6 -14.1 -3.5 -3.6
+310       5.0          1.2     -2.6       4.5           0.7        0       1.0      -3.2       1.2  ...    -1.6    -1.7   -1.3   -3.1  -14.4  -16.5 -11.3 -3.5 -3.6
+311      -0.6          3.2      6.1       2.1           6.4        1       6.1       7.0      -4.2  ...    -1.6    14.9    2.9    2.4   -9.0   -9.5  -3.6  1.7  2.2
+312      10.5         10.0      1.5       7.6           7.2        1      -9.3       1.9      -6.0  ...     3.6    -4.4   -1.3    0.3   -9.9   -7.7  -5.8 -2.9 -3.6
+
+[313 rows x 59 columns]
+master_testing_dataframe
+     masa_all  del_asa_all  sbr_all  rasa_all  del_rasa_all  hotspot  blosum_a  blosum_c  blosum_d  ...  pssm_y  pssm_v  HSEBD  HSEAU  HSEAD  HSEBU    CN   RD  Rda
+0        -4.2         -4.3     -3.9      -4.9          -4.8        0      -4.7       0.8      -3.5  ...     4.6     3.1   -2.2   -0.7   -0.1    0.9  -1.0 -1.2 -1.0
+1        -4.4         -1.3      5.9      -5.1          -1.8        0      -4.7       0.8      -3.5  ...     6.5     0.3    7.3    5.8   -0.8   -2.8   3.4 -0.9 -1.1
+2        -5.1         -2.2      5.8      -5.8          -2.6        1      -4.7       0.8      -3.5  ...    10.2    -2.4    6.6    8.4   -2.1   -0.6   4.4 -1.0 -1.2
+3         7.2          4.3     -1.5       5.9           3.3        0       0.5      -2.8       0.6  ...    -2.9    -2.4    0.5   -0.1    0.6   -0.6  -0.0 -1.3 -1.4
+4        10.0         15.4      6.1       6.8          11.7        1      -9.9       0.8      -5.6  ...     4.6    -5.1    1.8    7.1   -1.4    3.8   3.9 -0.9 -0.9
+..        ...          ...      ...       ...           ...      ...       ...       ...       ...  ...     ...     ...    ...    ...    ...    ...   ...  ...  ...
+121       3.1          7.2      5.8       5.1           9.6        0      -4.7      -2.8      15.2  ...     4.6     3.1    3.9   13.0   -3.5    6.0   6.8 -1.3 -1.3
+122      -1.3          1.7      4.9      -3.7          -0.7        0       0.5      -2.8      -1.5  ...    -2.9    -5.1    5.9    3.9   -0.1   -2.8   2.4 -1.0 -1.2
+123       1.4         -2.3     -5.3      -1.6          -3.8        0       0.5      -2.8      -1.5  ...    -2.9     3.1   -2.9   -0.7    4.0    6.0   1.9 -1.3 -1.2
+124       3.6          2.3     -0.9       3.0           1.7        0      -4.7       0.8      -3.5  ...    12.1     0.3  -11.1  -11.2   -8.9  -10.8 -15.3 -1.3 -1.4
+125      -2.7         -2.3     -0.9      -4.2          -3.3        0      -4.7       0.8      -3.5  ...    14.0    -5.1    0.5    1.3    4.0    4.6   3.4 -1.2 -1.0
+
+[126 rows x 59 columns]
+Train model?(y/n):y
+
+WARNING: The TensorFlow contrib module will not be included in TensorFlow 2.0.
+For more information, please see:
+  * https://github.com/tensorflow/community/blob/master/rfcs/20180907-contrib-sunset.md
+  * https://github.com/tensorflow/addons
+If you depend on functionality not listed there, please file an issue.
+
+creating DNNClassifier object...
+creating input functions...
+TRAINING TARGETS
+     hotspot
+0          0
+1          0
+2          1
+3          0
+4          0
+..       ...
+308        1
+309        0
+310        0
+311        1
+312        1
+
+[313 rows x 1 columns]
+Training model...
+Success Rate (on training data):
+2019-06-12 23:09:32.493780: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2019-06-12 23:09:32.494038: I tensorflow/core/common_runtime/process_util.cc:71] Creating new thread pool with default inter op setting: 12. Tune using inter_op_parallelism_threads for best performance.
+  period 00 : 0.75
+  period 01 : 0.77
+  period 02 : 0.77
+  period 03 : 0.77
+  period 04 : 0.77
+  period 05 : 0.77
+  period 06 : 0.77
+  period 07 : 0.77
+  period 08 : 0.77
+  period 09 : 0.77
+Final success rate(on training data):   0.77
+Final success rate (on validation data): 0.63
+Training Sensitivity: 0.8278195488721805
+Training Specificity: 0.7316666666666667
+Validation Sensitivity: 0.7666666666666667
+Validation Specificity: 0.5655172413793104
+Model training finished
+learning rate: 0.07
+l1 strength: 0.03
+hidden units: [7, 5, 3, 1]
+used features: ['masa_all', 'del_asa_all', 'sbr_all', 'rasa_all', 'del_rasa_all', 'hydrophobicity', 'hydrophilicity']
+(blossom) Jimmys-MacBook-Pro:src jimmykang$ python main.py
+THIS IS THE CORRECT PATH
+
+MASTER TRAINING DATAFRAME - PRE NORMALIZATION
+     masa_all  del_asa_all  sbr_all  rasa_all  del_rasa_all  hotspot  blosum_a  blosum_c  blosum_d  ...  pssm_y  pssm_v  HSEBD  HSEAU  HSEAD  HSEBU   CN  RD  Rda
+0          51           30      0.6       0.3           0.2        0        -1        -4         2  ...      -1       0   22.0   21.0   24.0   23.0 45.0 2.9  3.7
+1          39           33      0.8       0.2           0.1        0        -3        -2        -4  ...       1      -1   20.0   23.0   23.0   26.0 46.0 2.9  4.6
+2          42           36      0.9       0.2           0.2        1        -3        -2        -4  ...       0      -2   23.0   22.0   27.0   26.0 49.0 3.5  4.3
+3          58           30      0.5       0.3           0.2        0        -1        -4         2  ...       2      -1   14.0   10.0   29.0   25.0 39.0 3.0  3.6
+4           3            3      1.0       0.0           0.0        0         1        -1         0  ...       1      -2   22.0   25.0   23.0   26.0 48.0 6.2  6.5
+..        ...          ...      ...       ...           ...      ...       ...       ...       ...  ...     ...     ...    ...    ...    ...    ...  ...  ..  ...
+308        82           65      0.8       0.5           0.4        1        -1        -1        -4  ...      -1       1   16.0   18.0   14.0   16.0 32.0 2.8  3.1
+309       147            0      0.0       0.7           0.0        0        -1        -3        -1  ...      -2      -2   12.0    5.0   12.0    5.0 17.0 1.9  2.0
+310       137           64      0.5       0.7           0.3        0        -1        -3         0  ...      -1      -2   18.0   15.0    7.0    4.0 22.0 1.9  2.0
+311        81           81      1.0       0.6           0.6        1         0        -1        -3  ...      -1       4   24.0   23.0   13.0   12.0 36.0 4.6  5.2
+312       192          138      0.7       0.8           0.6        1        -3        -2        -4  ...       2      -3   18.0   20.0   12.0   14.0 32.0 2.2  2.0
+
+[313 rows x 59 columns]
+MASTER TESTING DATAFRAME - PRE NORMALIZATION
+     masa_all  del_asa_all  sbr_all  rasa_all  del_rasa_all  hotspot  blosum_a  blosum_c  blosum_d  ...  pssm_y  pssm_v  HSEBD  HSEAU  HSEAD  HSEBU   CN  RD  Rda
+0          52           24      0.5       0.3           0.1        0        -2        -2        -3  ...       2       0   16.0   18.0   21.0   23.0 39.0 3.3  4.5
+1          50           49      1.0       0.3           0.2        0        -2        -2        -3  ...       3      -1   30.0   28.0   20.0   18.0 48.0 5.5  4.0
+2          43           42      1.0       0.2           0.2        1        -2        -2        -3  ...       5      -2   29.0   32.0   18.0   21.0 50.0 4.4  3.1
+3         163           96      0.6       0.8           0.5        0        -1        -3        -1  ...      -2      -2   20.0   19.0   22.0   21.0 41.0 2.4  2.0
+4         190          188      1.0       0.8           0.8        1        -3        -2        -4  ...       2      -3   22.0   30.0   19.0   27.0 49.0 5.0  5.4
+..        ...          ...      ...       ...           ...      ...       ...       ...       ...  ...     ...     ...    ...    ...    ...    ...  ...  ..  ...
+121       123          120      1.0       0.8           0.7        0        -2        -3         6  ...       2       0   25.0   39.0   16.0   30.0 55.0 2.7  2.4
+122        80           74      0.9       0.3           0.3        0        -1        -3        -2  ...      -2      -3   28.0   25.0   21.0   18.0 46.0 4.4  3.2
+123       106           41      0.4       0.4           0.2        0        -1        -3        -2  ...      -2       0   15.0   18.0   27.0   30.0 45.0 2.4  3.0
+124       128           79      0.6       0.6           0.4        0        -2        -2        -3  ...       6      -1    3.0    2.0    8.0    7.0 10.0 2.2  2.0
+125        66           41      0.6       0.3           0.2        0        -2        -2        -3  ...       7      -3   20.0   21.0   27.0   28.0 48.0 3.4  4.6
+
+[126 rows x 59 columns]
+master_training_dataframe
+     masa_all  del_asa_all  sbr_all  rasa_all  del_rasa_all  hotspot  blosum_a  blosum_c  blosum_d  ...  pssm_y  pssm_v  HSEBD  HSEAU  HSEAD  HSEBU    CN   RD  Rda
+0        -3.6         -2.9     -0.6      -4.1          -3.1        0       1.0      -8.3       4.8  ...    -1.6     3.9    1.5    1.0    0.8    0.2   1.3 -1.6 -0.4
+1        -4.8         -2.5      3.6      -5.9          -3.3        0      -9.3       1.9      -6.0  ...     1.9     1.1    0.1    2.4   -0.1    2.8   1.9 -1.5  1.1
+2        -4.5         -2.1      3.8      -5.7          -3.0        1      -9.3       1.9      -6.0  ...     0.1    -1.7    2.2    1.7    3.5    2.8   3.5 -0.4  0.6
+3        -2.9         -2.9     -1.7      -3.4          -3.1        0       1.0      -8.3       4.8  ...     3.6     1.1   -4.1   -6.6    5.3    1.9  -2.0 -1.4 -0.7
+4        -8.3         -6.1      6.1      -8.9          -6.1        0      11.3       7.0       1.2  ...     1.9    -1.7    1.5    3.8   -0.1    2.8   3.0  4.6  4.6
+..        ...          ...      ...       ...           ...      ...       ...       ...       ...  ...     ...     ...    ...    ...    ...    ...   ...  ...  ...
+308      -0.5          1.3      2.8       0.7           2.4        1       1.0       7.0      -6.0  ...    -1.6     6.6   -2.7   -1.1   -8.1   -6.0  -5.8 -1.8 -1.6
+309       6.0         -6.4    -10.2       5.0          -6.6        0       1.0      -3.2      -0.6  ...    -3.3    -1.7   -5.4  -10.1   -9.9  -15.6 -14.1 -3.5 -3.6
+310       5.0          1.2     -2.6       4.5           0.7        0       1.0      -3.2       1.2  ...    -1.6    -1.7   -1.3   -3.1  -14.4  -16.5 -11.3 -3.5 -3.6
+311      -0.6          3.2      6.1       2.1           6.4        1       6.1       7.0      -4.2  ...    -1.6    14.9    2.9    2.4   -9.0   -9.5  -3.6  1.7  2.2
+312      10.5         10.0      1.5       7.6           7.2        1      -9.3       1.9      -6.0  ...     3.6    -4.4   -1.3    0.3   -9.9   -7.7  -5.8 -2.9 -3.6
+
+[313 rows x 59 columns]
+master_testing_dataframe
+     masa_all  del_asa_all  sbr_all  rasa_all  del_rasa_all  hotspot  blosum_a  blosum_c  blosum_d  ...  pssm_y  pssm_v  HSEBD  HSEAU  HSEAD  HSEBU    CN   RD  Rda
+0        -4.2         -4.3     -3.9      -4.9          -4.8        0      -4.7       0.8      -3.5  ...     4.6     3.1   -2.2   -0.7   -0.1    0.9  -1.0 -1.2 -1.0
+1        -4.4         -1.3      5.9      -5.1          -1.8        0      -4.7       0.8      -3.5  ...     6.5     0.3    7.3    5.8   -0.8   -2.8   3.4 -0.9 -1.1
+2        -5.1         -2.2      5.8      -5.8          -2.6        1      -4.7       0.8      -3.5  ...    10.2    -2.4    6.6    8.4   -2.1   -0.6   4.4 -1.0 -1.2
+3         7.2          4.3     -1.5       5.9           3.3        0       0.5      -2.8       0.6  ...    -2.9    -2.4    0.5   -0.1    0.6   -0.6  -0.0 -1.3 -1.4
+4        10.0         15.4      6.1       6.8          11.7        1      -9.9       0.8      -5.6  ...     4.6    -5.1    1.8    7.1   -1.4    3.8   3.9 -0.9 -0.9
+..        ...          ...      ...       ...           ...      ...       ...       ...       ...  ...     ...     ...    ...    ...    ...    ...   ...  ...  ...
+121       3.1          7.2      5.8       5.1           9.6        0      -4.7      -2.8      15.2  ...     4.6     3.1    3.9   13.0   -3.5    6.0   6.8 -1.3 -1.3
+122      -1.3          1.7      4.9      -3.7          -0.7        0       0.5      -2.8      -1.5  ...    -2.9    -5.1    5.9    3.9   -0.1   -2.8   2.4 -1.0 -1.2
+123       1.4         -2.3     -5.3      -1.6          -3.8        0       0.5      -2.8      -1.5  ...    -2.9     3.1   -2.9   -0.7    4.0    6.0   1.9 -1.3 -1.2
+124       3.6          2.3     -0.9       3.0           1.7        0      -4.7       0.8      -3.5  ...    12.1     0.3  -11.1  -11.2   -8.9  -10.8 -15.3 -1.3 -1.4
+125      -2.7         -2.3     -0.9      -4.2          -3.3        0      -4.7       0.8      -3.5  ...    14.0    -5.1    0.5    1.3    4.0    4.6   3.4 -1.2 -1.0
+
+[126 rows x 59 columns]
+Train model?(y/n):y
+
+WARNING: The TensorFlow contrib module will not be included in TensorFlow 2.0.
+For more information, please see:
+  * https://github.com/tensorflow/community/blob/master/rfcs/20180907-contrib-sunset.md
+  * https://github.com/tensorflow/addons
+If you depend on functionality not listed there, please file an issue.
+
+creating DNNClassifier object...
+creating input functions...
+TRAINING TARGETS
+     hotspot
+0          0
+1          0
+2          1
+3          0
+4          0
+..       ...
+308        1
+309        0
+310        0
+311        1
+312        1
+
+[313 rows x 1 columns]
+Training model...
+Success Rate (on training data):
+2019-06-12 23:13:49.508569: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2019-06-12 23:13:49.508869: I tensorflow/core/common_runtime/process_util.cc:71] Creating new thread pool with default inter op setting: 12. Tune using inter_op_parallelism_threads for best performance.
+  period 00 : 0.73
+  period 01 : 0.73
+  period 02 : 0.73
+  period 03 : 0.74
+  period 04 : 0.74
+  period 05 : 0.74
+  period 06 : 0.74
+  period 07 : 0.74
+  period 08 : 0.75
+  period 09 : 0.75
+Final success rate(on training data):   0.75
+Final success rate (on validation data): 0.68
+Training Sensitivity: 0.6654135338345865
+Training Specificity: 0.8077777777777778
+Validation Sensitivity: 0.6128205128205129
+Validation Specificity: 0.7057471264367816
+Model training finished
+learning rate: 0.07
+l1 strength: 0.03
+hidden units: [7, 5, 3, 1]
+used features: ['masa_all', 'del_asa_all', 'sbr_all', 'rasa_all', 'del_rasa_all']
+(blossom) Jimmys-MacBook-Pro:src jimmykang$ python main.py
+THIS IS THE CORRECT PATH
+
+MASTER TRAINING DATAFRAME - PRE NORMALIZATION
+     masa_all  del_asa_all  sbr_all  rasa_all  del_rasa_all  hotspot  blosum_a  blosum_c  blosum_d  ...  pssm_y  pssm_v  HSEBD  HSEAU  HSEAD  HSEBU   CN  RD  Rda
+0          51           30      0.6       0.3           0.2        0        -1        -4         2  ...      -1       0   22.0   21.0   24.0   23.0 45.0 2.9  3.7
+1          39           33      0.8       0.2           0.1        0        -3        -2        -4  ...       1      -1   20.0   23.0   23.0   26.0 46.0 2.9  4.6
+2          42           36      0.9       0.2           0.2        1        -3        -2        -4  ...       0      -2   23.0   22.0   27.0   26.0 49.0 3.5  4.3
+3          58           30      0.5       0.3           0.2        0        -1        -4         2  ...       2      -1   14.0   10.0   29.0   25.0 39.0 3.0  3.6
+4           3            3      1.0       0.0           0.0        0         1        -1         0  ...       1      -2   22.0   25.0   23.0   26.0 48.0 6.2  6.5
+..        ...          ...      ...       ...           ...      ...       ...       ...       ...  ...     ...     ...    ...    ...    ...    ...  ...  ..  ...
+308        82           65      0.8       0.5           0.4        1        -1        -1        -4  ...      -1       1   16.0   18.0   14.0   16.0 32.0 2.8  3.1
+309       147            0      0.0       0.7           0.0        0        -1        -3        -1  ...      -2      -2   12.0    5.0   12.0    5.0 17.0 1.9  2.0
+310       137           64      0.5       0.7           0.3        0        -1        -3         0  ...      -1      -2   18.0   15.0    7.0    4.0 22.0 1.9  2.0
+311        81           81      1.0       0.6           0.6        1         0        -1        -3  ...      -1       4   24.0   23.0   13.0   12.0 36.0 4.6  5.2
+312       192          138      0.7       0.8           0.6        1        -3        -2        -4  ...       2      -3   18.0   20.0   12.0   14.0 32.0 2.2  2.0
+
+[313 rows x 59 columns]
+MASTER TESTING DATAFRAME - PRE NORMALIZATION
+     masa_all  del_asa_all  sbr_all  rasa_all  del_rasa_all  hotspot  blosum_a  blosum_c  blosum_d  ...  pssm_y  pssm_v  HSEBD  HSEAU  HSEAD  HSEBU   CN  RD  Rda
+0          52           24      0.5       0.3           0.1        0        -2        -2        -3  ...       2       0   16.0   18.0   21.0   23.0 39.0 3.3  4.5
+1          50           49      1.0       0.3           0.2        0        -2        -2        -3  ...       3      -1   30.0   28.0   20.0   18.0 48.0 5.5  4.0
+2          43           42      1.0       0.2           0.2        1        -2        -2        -3  ...       5      -2   29.0   32.0   18.0   21.0 50.0 4.4  3.1
+3         163           96      0.6       0.8           0.5        0        -1        -3        -1  ...      -2      -2   20.0   19.0   22.0   21.0 41.0 2.4  2.0
+4         190          188      1.0       0.8           0.8        1        -3        -2        -4  ...       2      -3   22.0   30.0   19.0   27.0 49.0 5.0  5.4
+..        ...          ...      ...       ...           ...      ...       ...       ...       ...  ...     ...     ...    ...    ...    ...    ...  ...  ..  ...
+121       123          120      1.0       0.8           0.7        0        -2        -3         6  ...       2       0   25.0   39.0   16.0   30.0 55.0 2.7  2.4
+122        80           74      0.9       0.3           0.3        0        -1        -3        -2  ...      -2      -3   28.0   25.0   21.0   18.0 46.0 4.4  3.2
+123       106           41      0.4       0.4           0.2        0        -1        -3        -2  ...      -2       0   15.0   18.0   27.0   30.0 45.0 2.4  3.0
+124       128           79      0.6       0.6           0.4        0        -2        -2        -3  ...       6      -1    3.0    2.0    8.0    7.0 10.0 2.2  2.0
+125        66           41      0.6       0.3           0.2        0        -2        -2        -3  ...       7      -3   20.0   21.0   27.0   28.0 48.0 3.4  4.6
+
+[126 rows x 59 columns]
+master_training_dataframe
+     masa_all  del_asa_all  sbr_all  rasa_all  del_rasa_all  hotspot  blosum_a  blosum_c  blosum_d  ...  pssm_y  pssm_v  HSEBD  HSEAU  HSEAD  HSEBU    CN   RD  Rda
+0        -3.6         -2.9     -0.6      -4.1          -3.1        0       1.0      -8.3       4.8  ...    -1.6     3.9    1.5    1.0    0.8    0.2   1.3 -1.6 -0.4
+1        -4.8         -2.5      3.6      -5.9          -3.3        0      -9.3       1.9      -6.0  ...     1.9     1.1    0.1    2.4   -0.1    2.8   1.9 -1.5  1.1
+2        -4.5         -2.1      3.8      -5.7          -3.0        1      -9.3       1.9      -6.0  ...     0.1    -1.7    2.2    1.7    3.5    2.8   3.5 -0.4  0.6
+3        -2.9         -2.9     -1.7      -3.4          -3.1        0       1.0      -8.3       4.8  ...     3.6     1.1   -4.1   -6.6    5.3    1.9  -2.0 -1.4 -0.7
+4        -8.3         -6.1      6.1      -8.9          -6.1        0      11.3       7.0       1.2  ...     1.9    -1.7    1.5    3.8   -0.1    2.8   3.0  4.6  4.6
+..        ...          ...      ...       ...           ...      ...       ...       ...       ...  ...     ...     ...    ...    ...    ...    ...   ...  ...  ...
+308      -0.5          1.3      2.8       0.7           2.4        1       1.0       7.0      -6.0  ...    -1.6     6.6   -2.7   -1.1   -8.1   -6.0  -5.8 -1.8 -1.6
+309       6.0         -6.4    -10.2       5.0          -6.6        0       1.0      -3.2      -0.6  ...    -3.3    -1.7   -5.4  -10.1   -9.9  -15.6 -14.1 -3.5 -3.6
+310       5.0          1.2     -2.6       4.5           0.7        0       1.0      -3.2       1.2  ...    -1.6    -1.7   -1.3   -3.1  -14.4  -16.5 -11.3 -3.5 -3.6
+311      -0.6          3.2      6.1       2.1           6.4        1       6.1       7.0      -4.2  ...    -1.6    14.9    2.9    2.4   -9.0   -9.5  -3.6  1.7  2.2
+312      10.5         10.0      1.5       7.6           7.2        1      -9.3       1.9      -6.0  ...     3.6    -4.4   -1.3    0.3   -9.9   -7.7  -5.8 -2.9 -3.6
+
+[313 rows x 59 columns]
+master_testing_dataframe
+     masa_all  del_asa_all  sbr_all  rasa_all  del_rasa_all  hotspot  blosum_a  blosum_c  blosum_d  ...  pssm_y  pssm_v  HSEBD  HSEAU  HSEAD  HSEBU    CN   RD  Rda
+0        -4.2         -4.3     -3.9      -4.9          -4.8        0      -4.7       0.8      -3.5  ...     4.6     3.1   -2.2   -0.7   -0.1    0.9  -1.0 -1.2 -1.0
+1        -4.4         -1.3      5.9      -5.1          -1.8        0      -4.7       0.8      -3.5  ...     6.5     0.3    7.3    5.8   -0.8   -2.8   3.4 -0.9 -1.1
+2        -5.1         -2.2      5.8      -5.8          -2.6        1      -4.7       0.8      -3.5  ...    10.2    -2.4    6.6    8.4   -2.1   -0.6   4.4 -1.0 -1.2
+3         7.2          4.3     -1.5       5.9           3.3        0       0.5      -2.8       0.6  ...    -2.9    -2.4    0.5   -0.1    0.6   -0.6  -0.0 -1.3 -1.4
+4        10.0         15.4      6.1       6.8          11.7        1      -9.9       0.8      -5.6  ...     4.6    -5.1    1.8    7.1   -1.4    3.8   3.9 -0.9 -0.9
+..        ...          ...      ...       ...           ...      ...       ...       ...       ...  ...     ...     ...    ...    ...    ...    ...   ...  ...  ...
+121       3.1          7.2      5.8       5.1           9.6        0      -4.7      -2.8      15.2  ...     4.6     3.1    3.9   13.0   -3.5    6.0   6.8 -1.3 -1.3
+122      -1.3          1.7      4.9      -3.7          -0.7        0       0.5      -2.8      -1.5  ...    -2.9    -5.1    5.9    3.9   -0.1   -2.8   2.4 -1.0 -1.2
+123       1.4         -2.3     -5.3      -1.6          -3.8        0       0.5      -2.8      -1.5  ...    -2.9     3.1   -2.9   -0.7    4.0    6.0   1.9 -1.3 -1.2
+124       3.6          2.3     -0.9       3.0           1.7        0      -4.7       0.8      -3.5  ...    12.1     0.3  -11.1  -11.2   -8.9  -10.8 -15.3 -1.3 -1.4
+125      -2.7         -2.3     -0.9      -4.2          -3.3        0      -4.7       0.8      -3.5  ...    14.0    -5.1    0.5    1.3    4.0    4.6   3.4 -1.2 -1.0
+
+[126 rows x 59 columns]
+Train model?(y/n):y
+
+WARNING: The TensorFlow contrib module will not be included in TensorFlow 2.0.
+For more information, please see:
+  * https://github.com/tensorflow/community/blob/master/rfcs/20180907-contrib-sunset.md
+  * https://github.com/tensorflow/addons
+If you depend on functionality not listed there, please file an issue.
+
+creating DNNClassifier object...
+creating input functions...
+TRAINING TARGETS
+     hotspot
+0          0
+1          0
+2          1
+3          0
+4          0
+..       ...
+308        1
+309        0
+310        0
+311        1
+312        1
+
+[313 rows x 1 columns]
+Training model...
+Success Rate (on training data):
+2019-06-12 23:16:50.107319: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2019-06-12 23:16:50.107653: I tensorflow/core/common_runtime/process_util.cc:71] Creating new thread pool with default inter op setting: 12. Tune using inter_op_parallelism_threads for best performance.
+  period 00 : 0.75
+  period 01 : 0.77
+  period 02 : 0.77
+  period 03 : 0.77
+  period 04 : 0.77
+  period 05 : 0.77
+  period 06 : 0.77
+  period 07 : 0.77
+  period 08 : 0.77
+  period 09 : 0.77
+Final success rate(on training data):   0.77
+Final success rate (on validation data): 0.70
+Training Sensitivity: 0.7090225563909774
+Training Specificity: 0.8166666666666667
+Validation Sensitivity: 0.7102564102564103
+Validation Specificity: 0.7022988505747126
+Model training finished
+learning rate: 0.07
+l1 strength: 0.07
+hidden units: [7, 5, 3, 1]
+used features: ['masa_all', 'del_asa_all', 'sbr_all', 'rasa_all', 'del_rasa_all', 'hydrophobicity', 'hydrophilicity']
+(blossom) Jimmys-MacBook-Pro:src jimmykang$ 
